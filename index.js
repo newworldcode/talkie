@@ -30,6 +30,17 @@ Talkie.prototype = {
   off: event_name => this.removeListener(event_name),
 
   /**
+   * Trigger an event on this EventEmitter.
+   * @param  {String} event_name to trigger.
+   * @param  {Any} data to pass along with event.
+   * @return {EventEmitter} Original object behind Talkie.
+   */
+  trigger: function trigger(event_name, data/* [, more_data] */) {
+    this.emit.apply(event_name, arguments)
+    return this
+  },
+
+  /**
    * Request a piece of data from this instance of Talkie.
    * @param  {Any} request_name to make against the __requests Map.
    * @return {Object|Function} The original object behind this Talkie instance.

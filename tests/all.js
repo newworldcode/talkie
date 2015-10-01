@@ -4,6 +4,22 @@ const tape = require("tape")
 // Get Talkie.
 const Talkie = require("../index")
 
+tape("Talkie doesn't modify the original object.", test => {
+  // Expect this many assertions.
+  test.plan(2)
+
+  // Create a test object.
+  const test_obj = { fizz: "buzz" }
+  const test_func = () => "buzz"
+
+  Talkie()
+    .extend(test_obj)
+    .extend(test_func)
+
+  test.equals(test_func(), "buzz", "Original function not modified by Talkie.")
+  test.equals(test_obj.fizz, "buzz", "Original object not modified by Talkie.")
+})
+
 tape("Talkie extends an object with 'on, off, request, reply'.", test => {
   // Expect this many assertions.
   test.plan(4)

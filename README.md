@@ -1,6 +1,8 @@
 # Talkie
 
 ![Build status on Travis CI](https://travis-ci.org/newworldcode/talkie.svg)
+[![npm version](https://badge.fury.io/js/%40newworldcode%2Ftalkie.svg)](http://badge.fury.io/js/%40newworldcode%2Ftalkie)
+[![Coverage Status](https://coveralls.io/repos/newworldcode/talkie/badge.svg?branch=master&service=github)](https://coveralls.io/github/newworldcode/talkie?branch=master)
 
 EventEmitter, Request/Reply messaging bus for Node. Allows you to extend any object, function or class with Talkie and expose a messaging bus and request/reply interface.
 

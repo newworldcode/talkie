@@ -46,7 +46,9 @@ Talkie.prototype = {
    * @return {Object|Function} The original object behind this Talkie instance.
    */
   request: function request(request_name) {
-    return this.__requests.get(request_name)
+    const value = this.__requests.get(request_name)
+
+    return value instanceof Function ? value() : value
   },
 
   /**

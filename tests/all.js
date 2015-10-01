@@ -71,7 +71,6 @@ tape("Talkie `reply` stores the expected object.", test => {
   test.equal(test_obj.__requests.get("fizz"), "buzz", "Reply stores 'buzz'.")
 })
 
-
 tape("Talkie `request` replies with expected object.", test => {
   // Expect this many assertions.
   test.plan(1)
@@ -87,4 +86,21 @@ tape("Talkie `request` replies with expected object.", test => {
 
   // Test we have the appropriate member functions.
   test.equal(test_obj.request("fizz"), "buzz", "Request replies with 'buzz'.")
+})
+
+tape("Talkie `request` when reply is function receives function return, not function.", test => {
+  // Expect this many assertions.
+  test.plan(1)
+
+  // Create a test object.
+  const test_obj = {}
+
+  // Extend the test object.
+  Talkie().extend(test_obj)
+
+  // When we request "fizz", reply with "buzz"
+  test_obj.reply("fizz", () => "buzz")
+
+  // Test we have the appropriate member functions.
+  test.equal(test_obj.request("fizz"), "buzz", "Request fires function & replies with 'buzz'.")
 })

@@ -41,9 +41,9 @@ const test_obj = {}
 Talkie().extend(test_obj)
 
 // Set up `test_obj` to reply with a string.
-test_obj.new("fizz", function Fizz(){})
+test_obj.reply("fizz", function Fizz(){})
 
-console.log(test_obj.request("Fizz")) // => "Fizz"
+console.log(test_obj.new("Fizz")) // => "Fizz"
 ```
 
 #### `.on(event_name, callback)`/`.off(event_name, callback)`

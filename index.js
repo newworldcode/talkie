@@ -67,6 +67,18 @@ Talkie.prototype = {
   },
 
   /**
+   * Clear all `reply` stores and remove
+   * all event listeners.
+   * @return {EventEmitter} Reply with the original object behind Talkie.
+   */
+  reset: function reset() {
+    this.__requests.clear()
+    this.removeAllListeners()
+
+    return this
+  },
+
+  /**
    * Instantiate a stored function, is really just
    * like the `.request()` function but instantiates
    * instead of executes.

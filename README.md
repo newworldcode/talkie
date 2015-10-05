@@ -83,3 +83,22 @@ test_obj.on("fizz", event => {
 
 test_obj.trigger("fizz")
 ```
+
+#### `.reset()`
+Remove all stored `.reply()` calls and event listeners.
+
+```js
+const Talkie = require("talkie")
+const wrap_me = {}
+
+// Extend the test object.
+Talkie().extend(wrap_me)
+
+wrap_me.reply("fizz", 1)
+
+console.log(wrap_me.request("fizz")) // 1
+
+wrap_me.reset()
+
+console.log(wrap_me.request("fizz")) // undefined
+```

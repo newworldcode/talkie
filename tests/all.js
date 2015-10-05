@@ -159,3 +159,21 @@ tape("Talkie instantiates a stored function with new", test => {
   test.equal((wrap_me.new("fizz") instanceof fizz), true, "new creates an instance of fizz(){} function.")
   test.equal((wrap_me.new("buzz") instanceof buzz), true, "new creates an instance of buzz(){} class.")
 })
+
+tape("Talkie can remove all listeners and reply queues", test => {
+  test.plan(2)
+
+  // Extend this.
+  const wrap_me = {}
+
+  // Extend the test object.
+  Talkie().extend(wrap_me)
+
+  wrap_me.reply("fizz", 1)
+
+  test.equal(wrap_me.request("fizz"), 1, "Should reply with 1.")
+
+  wrap_me.reset()
+
+  test.equal(typeof wrap_me.request("fizz"), "undefined", "Get undefined because of reset")
+})

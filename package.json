@@ -1,10 +1,11 @@
 {
   "name": "@newworldcode/talkie",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "EventEmitter, Request/Reply messaging bus for Node.",
   "main": "index.js",
   "scripts": {
-    "test": "node_modules/.bin/tape tests/**/*.js | node_modules/.bin/tap-spec"
+    "test": "tape tests/**/*.js | tap-spec",
+    "test-coverage": "istanbul cover tests/*.js --report lcovonly | tap-spec"
   },
   "repository": {
     "type": "git",
@@ -28,6 +29,7 @@
   "homepage": "https://github.com/newworldcode/talkie#readme",
   "devDependencies": {
     "tap-spec": "^4.1.0",
-    "tape": "^4.2.0"
+    "tape": "^4.2.0",
+    "istanbul": "^0.3.21"
   }
 }

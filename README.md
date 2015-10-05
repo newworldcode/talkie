@@ -30,6 +30,22 @@ console.log(test_obj()) // => "buzz"
 console.log(test_obj.request("Fizz")) // => "Buzz"
 ```
 
+#### `.new()`
+Create an instance of a stored object to `.reply()` with.
+
+```js
+const Talkie = require("talkie")
+const test_obj = {}
+
+// Extend the test object.
+Talkie().extend(test_obj)
+
+// Set up `test_obj` to reply with a string.
+test_obj.reply("fizz", function Fizz(){})
+
+console.log(test_obj.request("Fizz")) // => "Fizz"
+```
+
 #### `.on(event_name, callback)`/`.off(event_name, callback)`
 `on` and `off` act in the same way as the respective functions do in other common libraries, they add and remove listeners respectively.
 

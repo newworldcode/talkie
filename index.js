@@ -27,7 +27,10 @@ Talkie.prototype = {
    * @param  {String} event_name to remove listeners for.
    * @return {Object|Function} The original emitter.
    */
-  off: event_name => this.removeListener(event_name),
+  off: function off(event_name, callback) {
+    this.removeListener(event_name, callback)
+    return this
+  },
 
   /**
    * Trigger an event on this EventEmitter.
@@ -36,7 +39,7 @@ Talkie.prototype = {
    * @return {EventEmitter} Original object behind Talkie.
    */
   trigger: function trigger(event_name, data/* [, more_data] */) {
-    this.emit.apply(event_name, arguments)
+    this.emit.apply(this, arguments)
     return this
   },
 
@@ -61,6 +64,19 @@ Talkie.prototype = {
     this.__requests.set(request_name, reply_with)
 
     return this
+  },
+
+  /**
+   * Instantiate a stored function, is really just
+   * like the `.request()` function but instantiates
+   * instead of executes.
+   * @param  {Any} request_name to make against the __requests Map.
+   * @return {Function} The instantiated function behind this Talkie instance.
+   */
+  new: function instantiate(request_name) {
+    const Value = this.__requests.get(request_name)
+
+    return new Value()
   }
 }
 

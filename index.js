@@ -38,7 +38,7 @@ Talkie.prototype = {
    * @param  {Any} data to pass along with event.
    * @return {EventEmitter} Original object behind Talkie.
    */
-  trigger: function trigger(event_name, data/* [, more_data] */) {
+  trigger: function trigger(event_name/*, data [, more_data] */) {
     this.emit.apply(this, arguments)
     return this
   },
@@ -48,10 +48,11 @@ Talkie.prototype = {
    * @param  {Any} request_name to make against the __requests Map.
    * @return {Object|Function} The original object behind this Talkie instance.
    */
-  request: function request(request_name) {
+  request: function request(request_name/* [, args ] */) {
     const value = this.__requests.get(request_name)
+    const args = [].slice.call(arguments, 1)
 
-    return value instanceof Function ? value() : value
+    return value instanceof Function ? value(args) : value
   },
 
   /**

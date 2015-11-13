@@ -52,7 +52,7 @@ Talkie.prototype = {
     const value = this.__requests.get(request_name)
     const args = [].slice.call(arguments, 1)
 
-    return value instanceof Function ? value(args) : value
+    return value instanceof Function ? value.apply(value.prototype, args) : value
   },
 
   /**

@@ -1,6 +1,6 @@
 {
   "name": "@newworldcode/talkie",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "EventEmitter, Request/Reply messaging bus for Node.",
   "main": "index.js",
   "scripts": {
